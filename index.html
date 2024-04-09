@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Hugo 0.66.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="../css/skeleton.css">
+  <link rel="stylesheet" href="../css/custom.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="alternate" href="index.xml" type="application/rss+xml" title="Speech Research">
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+  <title>DisSR: Disentangling Speech Representation for Degradation-Prior Guided Cross-Domain Speech Restoration</title>
+</head>
+
+<body rightmargin="150" leftmargin="150" topmargin="100" bottommargin="100" line-height:160%>
+  <font size="5">
+
+    <div class="container">
+
+      <header role="banner">
+
+      </header>
+      <main role="main">
+        <article itemscope itemtype="https://schema.org/BlogPosting">
+          <br></br>
+          <h1 itemprop="headline" align="center">
+            <font color="000093" size="7">DisSR: Disentangling Speech Representation for Degradation-Prior Guided Cross-Domain Speech Restoration</br>
+            </font>
+          </h1>
+          <br></br>
+
+          <!--
+          <p style="line-height:1" align="center"><b>
+              <font color="061E61">Ziqi Liang<sup>1,2*</sup>, Xulong Zhang<sup>1*</sup>, Jianzong Wang<sup>1</sup>, Ning Cheng<sup>1</sup>, Jing Xiao<sup>1</sup></font>
+            </b></p>
+          <p style="line-height:0.6" align="center">
+            <font color="061E61"><sup>1</sup>Ping An Technology (Shenzhen) Co., Ltd., Shenzhen, China</font>
+          </p>
+          <p style="line-height:0.6" align="center">
+            <font color="061E61"> <sup>2</sup>University of Science and Technology of China, Hefei, China</font>
+          </p>
+          <p style="line-height:1" align="center">
+            <font color="061E61"><sup>*</sup>Equal Contribution</font>
+          </p>
+          -->
+
+          <p style="line-height:1" align="center"><b>
+              <font color="061E61">Anonymous
+            </b></p>
+          
+          <section itemprop="entry-text">
+            <br>
+            <div class="container">
+              <center>
+                <p><a href="https://github.com/itspsp/DisSR-main">[Code on GitHub]</a></p>
+              </center>
+            </div>
+            
+            <!--
+            <h2 id="abstract">
+              <font color="000093">Abstract</font>
+            </h2>
+            <p style="text-align: justify;">
+              <font color="061E61"> Speech Restoration aims to remove distortions in speech signals. 
+                Prior methods often use artificial paired data created by applying various distortions to high-quality speech corpora, it can not sufficiently represent acoustic distortions of real data, limiting the applicability. In addition, most studies ignore the problem of model generalization across unseen domains.
+To overcome those limitations, we propose a general cross-domain Speech Restoration model with Degradation Prior Guidance, which can extract speaker-invariant representation as degradation prior to guide the speech restoration model to generate high-quality speech. 
+In addition, we propose an optimization strategy to enhance the adaptability and robustness of the restoration model in different environments.
+                Experiments show that our method can generate high-quality restored speech under a variety of distortion conditions.
+                
+                </font>
+            </p>
+            -->
+            
+            
+            <br></br>
+            <h2 id="pipeline">
+              <font color="000093">Pipeline</font>
+            </h2>
+            <p style="text-align: justify;">
+            <figure>
+              <p align="center"><img src="DisSR.png" width="100%" class="center" /></p>
+              <!--
+              <figcaption>
+                <p style="text-align: justify;">
+                  <font color="061E61"><b>Figure 1:</b> Overview of AudioLDM design for text-to-audio generation (left),
+                    and text-guided audio manipulation (right).
+                    During training, latent diffusion models (LDMs) are conditioned on audio embedding and trained in a
+                    continuous space learned by VAE.
+                    The sampling process uses text embedding as the condition. Given pretrained LDMs, the zero-shot
+                    audio inpainting and style transfer are realized in the reverse process.
+                    The block Forward Diffusion denotes the process that corrupt data with gaussian noise.
+                </p>
+              </figcaption>
+              -->
+            </figure>
+
+                 
+
+        
+
+            <br></br>
+            <h2 id="Evaluation Results on Band-limited distoration (LibriTTS -> VCTK)">
+              <font color="000093">Evaluation Results on Band-limited distoration (LibriTTS -> VCTK)</font>
+            </h2>
+            <table class="table" align="center" style="table-layout: fixed;word-break:break-word">
+              <thead>
+                <tr>
+                  <th scope="col" width="30%" style="text-align: center;">
+                    <font color="061E61">Distorted</font>
+                  </th>
+                  <th scope="col" width="30%" style="text-align: center;">
+                    <font color="061E61">VoiceFixer</font>
+                  </th>
+                  <th scope="col" width="30%" style="text-align: center;">
+                    <font color="061E61">SelfRemaster</font>
+                  </th>
+                  <th scope="col" width="30%" style="text-align: center;">
+                    <font color="061E61">DisSR</font>
+                  </th>
+                  <th scope="col" width="30%" style="text-align: center;">
+                    <font color="061E61">Ground-Truth</font>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"><img src="output/band-limited/fig/jsut/0-input.png" width="100%"></th>
+                  <th scope="row"><img src="output/band-limited/fig/vctk/0-vf.png" width="100%"></th>
+                  <th scope="row"><img src="output/band-limited/fig/jsut/0-self.png" width="100%"></th>
+                  <th scope="row"><img src="output/band-limited/fig/jsut/0-DisSR.png" width="100%"></th>
+                  <th scope="row"><img src="output/band-limited/fig/jsut/0-groundtruth.png" width="100%"></th>
+                </tr>
+                <tr>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/band-limited/wav/jsut/0-input.wav" autoplay />Your browser does not
+                      support the audio element.
+                    </audio></th>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/band-limited/wav/vctk/0-vf.wav" autoplay />Your browser does
+                      not support the audio element.
+                    </audio></th>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/band-limited/wav/jsut/0-self.wav" autoplay />Your browser does not support
+                      the audio element.
+                    </audio></th>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/band-limited/wav/jsut/0-DisSR.wav" autoplay />Your browser does not support
+                      the audio element.
+                    </audio></th>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/band-limited/wav/jsut/0-groundtruth.wav" autoplay />Your browser does not support
+                      the audio element.
+                    </audio></th>
+                </tr>
+                
+                <tr>
+                  <th scope="row"><img src="output/band-limited/fig/jsut/3-input.png" width="100%"></th>
+                  <th scope="row"><img src="output/band-limited/fig/vctk/3-vf.png" width="100%"></th>
+                  <th scope="row"><img src="output/band-limited/fig/jsut/3-self.png" width="100%"></th>
+                  <th scope="row"><img src="output/band-limited/fig/jsut/3-DisSR.png" width="100%"></th>
+                  <th scope="row"><img src="output/band-limited/fig/jsut/3-groundtruth.png" width="100%"></th>
+                </tr>
+                <tr>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/band-limited/wav/jsut/3-input.wav" autoplay />Your browser does not
+                      support the audio element.
+                    </audio></th>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/band-limited/wav/vctk/3-vf.wav" autoplay />Your browser does
+                      not support the audio element.
+                    </audio></th>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/band-limited/wav/jsut/3-self.wav" autoplay />Your browser does not support
+                      the audio element.
+                    </audio></th>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/band-limited/wav/jsut/3-DisSR.wav" autoplay />Your browser does not support
+                      the audio element.
+                    </audio></th>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/band-limited/wav/jsut/3-groundtruth.wav" autoplay />Your browser does not support
+                      the audio element.
+                    </audio></th>
+                </tr>
+              </tbody>
+            </table>
+
+            <br></br>
+            <h2 id="Evaluation Results on Clipped distoration (LibriTTS -> VCTK)">
+              <font color="000093">Evaluation Results on Clipped distoration (LibriTTS -> VCTK)</font>
+            </h2>
+            <table class="table" align="center" style="table-layout: fixed;word-break:break-word">
+              <thead>
+                <tr>
+                  <th scope="col" width="30%" style="text-align: center;">
+                    <font color="061E61">Distorted</font>
+                  </th>
+                  <th scope="col" width="30%" style="text-align: center;">
+                    <font color="061E61">VoiceFixer</font>
+                  </th>
+                  <th scope="col" width="30%" style="text-align: center;">
+                    <font color="061E61">SelfRemaster</font>
+                  </th>
+                  <th scope="col" width="30%" style="text-align: center;">
+                    <font color="061E61">DisSR</font>
+                  </th>
+                  <th scope="col" width="30%" style="text-align: center;">
+                    <font color="061E61">Ground-Truth</font>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"><img src="output/clipped/fig/jsut/0-input.png" width="100%"></th>
+                  <th scope="row"><img src="output/clipped/fig/vctk/0-vf.png" width="100%"></th>
+                  <th scope="row"><img src="output/clipped/fig/jsut/0-self.png" width="100%"></th>
+                  <th scope="row"><img src="output/clipped/fig/jsut/0-DisSR.png" width="100%"></th>
+                  <th scope="row"><img src="output/clipped/fig/jsut/0-groundtruth.png" width="100%"></th>
+                </tr>
+                <tr>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/clipped/wav/jsut/0-input.wav" autoplay />Your browser does not
+                      support the audio element.
+                    </audio></th>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/clipped/wav/vctk/0-vf.wav" autoplay />Your browser does
+                      not support the audio element.
+                    </audio></th>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/clipped/wav/jsut/0-self.wav" autoplay />Your browser does not support
+                      the audio element.
+                    </audio></th>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/clipped/wav/jsut/0-DisSR.wav" autoplay />Your browser does not support
+                      the audio element.
+                    </audio></th>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/clipped/wav/jsut/0-groundtruth.wav" autoplay />Your browser does not support
+                      the audio element.
+                    </audio></th>
+                </tr>
+                
+                <tr>
+                  <th scope="row"><img src="output/clipped/fig/jsut/1-input.png" width="100%"></th>
+                  <th scope="row"><img src="output/clipped/fig/vctk/1-vf.png" width="100%"></th>
+                  <th scope="row"><img src="output/clipped/fig/jsut/1-self.png" width="100%"></th>
+                  <th scope="row"><img src="output/clipped/fig/jsut/1-DisSR.png" width="100%"></th>
+                  <th scope="row"><img src="output/clipped/fig/jsut/1-groundtruth.png" width="100%"></th>
+                </tr>
+                <tr>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/clipped/wav/jsut/1-input.wav" autoplay />Your browser does not
+                      support the audio element.
+                    </audio></th>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/clipped/wav/vctk/1-vf.wav" autoplay />Your browser does
+                      not support the audio element.
+                    </audio></th>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/clipped/wav/jsut/1-self.wav" autoplay />Your browser does not support
+                      the audio element.
+                    </audio></th>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/clipped/wav/jsut/1-DisSR.wav" autoplay />Your browser does not support
+                      the audio element.
+                    </audio></th>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/clipped/wav/jsut/1-groundtruth.wav" autoplay />Your browser does not support
+                      the audio element.
+                    </audio></th>
+                </tr>
+              </tbody>
+            </table>
+
+
+            <br></br>
+            <h2 id="Evaluation Results on Quantized&Resampled distoration (LibriTTS -> VCTK)">
+              <font color="000093">Evaluation Results on Quantized&Resampled distoration (LibriTTS -> VCTK)</font>
+            </h2>
+            <table class="table" align="center" style="table-layout: fixed;word-break:break-word">
+              <thead>
+                <tr>
+                  <th scope="col" width="30%" style="text-align: center;">
+                    <font color="061E61">Distorted</font>
+                  </th>
+                  <th scope="col" width="30%" style="text-align: center;">
+                    <font color="061E61">VoiceFixer</font>
+                  </th>
+                  <th scope="col" width="30%" style="text-align: center;">
+                    <font color="061E61">SelfRemaster</font>
+                  </th>
+                  <th scope="col" width="30%" style="text-align: center;">
+                    <font color="061E61">DisSR</font>
+                  </th>
+                  <th scope="col" width="30%" style="text-align: center;">
+                    <font color="061E61">Ground-Truth</font>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"><img src="output/Quantized&resampled/fig/jsut/0-input.png" width="100%"></th>
+                  <th scope="row"><img src="output/Quantized&resampled/fig/vctk/0-vf.png" width="100%"></th>
+                  <th scope="row"><img src="output/Quantized&resampled/fig/jsut/0-self.png" width="100%"></th>
+                  <th scope="row"><img src="output/Quantized&resampled/fig/jsut/0-DisSR.png" width="100%"></th>
+                  <th scope="row"><img src="output/Quantized&resampled/fig/jsut/0-groundtruth.png" width="100%"></th>
+                </tr>
+                <tr>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/Quantized&resampled/wav/jsut/0-input.wav" autoplay />Your browser does not
+                      support the audio element.
+                    </audio></th>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/Quantized&resampled/wav/vctk/0-vf.wav" autoplay />Your browser does
+                      not support the audio element.
+                    </audio></th>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/Quantized&resampled/wav/jsut/0-self.wav" autoplay />Your browser does not support
+                      the audio element.
+                    </audio></th>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/Quantized&resampled/wav/jsut/0-DisSR.wav" autoplay />Your browser does not support
+                      the audio element.
+                    </audio></th>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/Quantized&resampled/wav/jsut/0-groundtruth.wav" autoplay />Your browser does not support
+                      the audio element.
+                    </audio></th>
+                </tr>
+                
+                <tr>
+                  <th scope="row"><img src="output/Quantized&resampled/fig/jsut/4-input.png" width="100%"></th>
+                  <th scope="row"><img src="output/Quantized&resampled/fig/vctk/4-vf.png" width="100%"></th>
+                  <th scope="row"><img src="output/Quantized&resampled/fig/jsut/4-self.png" width="100%"></th>
+                  <th scope="row"><img src="output/Quantized&resampled/fig/jsut/4-DisSR.png" width="100%"></th>
+                  <th scope="row"><img src="output/Quantized&resampled/fig/jsut/4-groundtruth.png" width="100%"></th>
+                </tr>
+                <tr>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/Quantized&resampled/wav/jsut/4-input.wav" autoplay />Your browser does not
+                      support the audio element.
+                    </audio></th>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/Quantized&resampled/wav/vctk/4-vf.wav" autoplay />Your browser does
+                      not support the audio element.
+                    </audio></th>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/Quantized&resampled/wav/jsut/4-self.wav" autoplay />Your browser does not support
+                      the audio element.
+                    </audio></th>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/Quantized&resampled/wav/jsut/4-DisSR.wav" autoplay />Your browser does not support
+                      the audio element.
+                    </audio></th>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/Quantized&resampled/wav/jsut/4-groundtruth.wav" autoplay />Your browser does not support
+                      the audio element.
+                    </audio></th>
+                </tr>
+              </tbody>
+            </table>
+
+            <br></br>
+            <h2 id="Evaluation Results on Overdrive distoration (LibriTTS -> VCTK)">
+              <font color="000093">Evaluation Results on Overdrive distoration (LibriTTS -> VCTK)</font>
+            </h2>
+            <table class="table" align="center" style="table-layout: fixed;word-break:break-word">
+              <thead>
+                <tr>
+                  <th scope="col" width="30%" style="text-align: center;">
+                    <font color="061E61">Distorted</font>
+                  </th>
+                  <th scope="col" width="30%" style="text-align: center;">
+                    <font color="061E61">VoiceFixer</font>
+                  </th>
+                  <th scope="col" width="30%" style="text-align: center;">
+                    <font color="061E61">SelfRemaster</font>
+                  </th>
+                  <th scope="col" width="30%" style="text-align: center;">
+                    <font color="061E61">DisSR</font>
+                  </th>
+                  <th scope="col" width="30%" style="text-align: center;">
+                    <font color="061E61">Ground-Truth</font>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"><img src="output/overdrive/fig/jsut/1-input.png" width="100%"></th>
+                  <th scope="row"><img src="output/overdrive/fig/vctk/1-vf.png" width="100%"></th>
+                  <th scope="row"><img src="output/overdrive/fig/jsut/1-self.png" width="100%"></th>
+                  <th scope="row"><img src="output/overdrive/fig/jsut/1-DisSR.png" width="100%"></th>
+                  <th scope="row"><img src="output/overdrive/fig/jsut/1-groundtruth.png" width="100%"></th>
+                </tr>
+                <tr>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/overdrive/wav/jsut/1-input.wav" autoplay />Your browser does not
+                      support the audio element.
+                    </audio></th>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/overdrive/wav/vctk/1-vf.wav" autoplay />Your browser does
+                      not support the audio element.
+                    </audio></th>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/overdrive/wav/jsut/1-self.wav" autoplay />Your browser does not support
+                      the audio element.
+                    </audio></th>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/overdrive/wav/jsut/1-DisSR.wav" autoplay />Your browser does not support
+                      the audio element.
+                    </audio></th>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/overdrive/wav/jsut/1-groundtruth.wav" autoplay />Your browser does not support
+                      the audio element.
+                    </audio></th>
+                </tr>
+                
+                <tr>
+                  <th scope="row"><img src="output/overdrive/fig/jsut/2-input.png" width="100%"></th>
+                  <th scope="row"><img src="output/overdrive/fig/vctk/2-vf.png" width="100%"></th>
+                  <th scope="row"><img src="output/overdrive/fig/jsut/2-self.png" width="100%"></th>
+                  <th scope="row"><img src="output/overdrive/fig/jsut/2-DisSR.png" width="100%"></th>
+                  <th scope="row"><img src="output/overdrive/fig/jsut/2-groundtruth.png" width="100%"></th>
+                </tr>
+                <tr>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/overdrive/wav/jsut/2-input.wav" autoplay />Your browser does not
+                      support the audio element.
+                    </audio></th>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/overdrive/wav/vctk/2-vf.wav" autoplay />Your browser does
+                      not support the audio element.
+                    </audio></th>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/overdrive/wav/jsut/2-self.wav" autoplay />Your browser does not support
+                      the audio element.
+                    </audio></th>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/overdrive/wav/jsut/2-DisSR.wav" autoplay />Your browser does not support
+                      the audio element.
+                    </audio></th>
+                  <th scope="row"><audio controls="controls">
+                      <source src="output/overdrive/wav/jsut/2-groundtruth.wav" autoplay />Your browser does not support
+                      the audio element.
+                    </audio></th>
+                </tr>
+              </tbody>
+            </table>
+
+            
+            </p>
+
+  
+            <hr>
+            <h2 id="Other comments">
+              <font color="000093">Other comments</font>
+            </h2>
+            <div class="container">
+              <p>
+                1. We share <a href="https://github.com/itspsp/DisSR-main">our code on github</a>, which aims to experimental reproduction and verification.
+              </p>
+              <p>
+                <!-- 2. We are double checking the copy-right issue on open-sourcing our pretrained model. This will not take too long. -->
+                2. We are internally confirming the copyright issues of the model and data, after which the pretrained models will be released.
+              </p>
+            </div>
+          </section>
+        </article>
+      </main>
+
+    </div>
+
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+      ga('create', 'UA-139981676-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+    <script type="text/x-mathjax-config">
+     MathJax.Hub.Config({
+         HTML: ["input/TeX","output/HTML-CSS"],
+         TeX: {
+                Macros: {
+                         bm: ["\\boldsymbol{#1}", 1],
+                         argmax: ["\\mathop{\\rm arg\\,max}\\limits"],
+                         argmin: ["\\mathop{\\rm arg\\,min}\\limits"]},
+                extensions: ["AMSmath.js","AMSsymbols.js"],
+                equationNumbers: { autoNumber: "AMS" } },
+         extensions: ["tex2jax.js"],
+         jax: ["input/TeX","output/HTML-CSS"],
+         tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                    processEscapes: true },
+         "HTML-CSS": { availableFonts: ["TeX"],
+                       linebreaks: { automatic: true } }
+     });
+ </script>
+
+    <script type="text/x-mathjax-config">
+     MathJax.Hub.Config({
+       tex2jax: {
+         skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+       }
+     });
+ </script>
+
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
+      </script>
+
+
+
+
+</body>
+
+</html>
