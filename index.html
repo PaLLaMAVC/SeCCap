@@ -14,7 +14,7 @@
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="alternate" href="index.xml" type="application/rss+xml" title="Speech Research">
   <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-  <title>DisSR: Disentangling Speech Representation for Degradation-Prior Guided Cross-Domain Speech Restoration</title>
+  <title>Bridging the Modality Gap: Semantic-Calibrated Zero-shot Speech Emotion Captioning with Self-Reward Alignment</title>
 </head>
 
 <body rightmargin="150" leftmargin="150" topmargin="100" bottommargin="100" line-height:160%>
@@ -29,25 +29,12 @@
         <article itemscope itemtype="https://schema.org/BlogPosting">
           <br></br>
           <h1 itemprop="headline" align="center">
-            <font color="000093" size="7">DisSR: Disentangling Speech Representation for Degradation-Prior Guided Cross-Domain Speech Restoration</br>
+            <font color="000093" size="7">Bridging the Modality Gap: Semantic-Calibrated Zero-shot Speech Emotion Captioning with Self-Reward Alignment</br>
             </font>
           </h1>
           <br></br>
 
-          <!--
-          <p style="line-height:1" align="center"><b>
-              <font color="061E61">Ziqi Liang<sup>1,2*</sup>, Xulong Zhang<sup>1*</sup>, Jianzong Wang<sup>1</sup>, Ning Cheng<sup>1</sup>, Jing Xiao<sup>1</sup></font>
-            </b></p>
-          <p style="line-height:0.6" align="center">
-            <font color="061E61"><sup>1</sup>Ping An Technology (Shenzhen) Co., Ltd., Shenzhen, China</font>
-          </p>
-          <p style="line-height:0.6" align="center">
-            <font color="061E61"> <sup>2</sup>University of Science and Technology of China, Hefei, China</font>
-          </p>
-          <p style="line-height:1" align="center">
-            <font color="061E61"><sup>*</sup>Equal Contribution</font>
-          </p>
-          -->
+      
 
           <p style="line-height:1" align="center"><b>
               <font color="061E61">Anonymous
@@ -57,25 +44,10 @@
             <br>
             <div class="container">
               <center>
-                <p><a href="https://github.com/itspsp/DisSR-main">[Code on GitHub]</a></p>
+                <p><a href="https://github.com/PaLLaMAVC/SeCCap-main">[Code on GitHub]</a></p>
               </center>
             </div>
-            
-            <!--
-            <h2 id="abstract">
-              <font color="000093">Abstract</font>
-            </h2>
-            <p style="text-align: justify;">
-              <font color="061E61"> Speech Restoration aims to remove distortions in speech signals. 
-                Prior methods often use artificial paired data created by applying various distortions to high-quality speech corpora, it can not sufficiently represent acoustic distortions of real data, limiting the applicability. In addition, most studies ignore the problem of model generalization across unseen domains.
-To overcome those limitations, we propose a general cross-domain Speech Restoration model with Degradation Prior Guidance, which can extract speaker-invariant representation as degradation prior to guide the speech restoration model to generate high-quality speech. 
-In addition, we propose an optimization strategy to enhance the adaptability and robustness of the restoration model in different environments.
-                Experiments show that our method can generate high-quality restored speech under a variety of distortion conditions.
-                
-                </font>
-            </p>
-            -->
-            
+                       
             
             <br></br>
             <h2 id="pipeline">
@@ -83,20 +55,8 @@ In addition, we propose an optimization strategy to enhance the adaptability and
             </h2>
             <p style="text-align: justify;">
             <figure>
-              <p align="center"><img src="DisSR.png" width="100%" class="center" /></p>
-              <!--
-              <figcaption>
-                <p style="text-align: justify;">
-                  <font color="061E61"><b>Figure 1:</b> Overview of AudioLDM design for text-to-audio generation (left),
-                    and text-guided audio manipulation (right).
-                    During training, latent diffusion models (LDMs) are conditioned on audio embedding and trained in a
-                    continuous space learned by VAE.
-                    The sampling process uses text embedding as the condition. Given pretrained LDMs, the zero-shot
-                    audio inpainting and style transfer are realized in the reverse process.
-                    The block Forward Diffusion denotes the process that corrupt data with gaussian noise.
-                </p>
-              </figcaption>
-              -->
+              <p align="center"><img src="fig2_v2.png" width="100%" class="center" /></p>
+              
             </figure>
 
                  
