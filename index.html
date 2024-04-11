@@ -75,7 +75,7 @@
             <h2 id="Zero-shot Speech Emotion Captioning Evaluation Results">
               <font color="000093">Zero-shot Speech Emotion Captioning Evaluation Results</font>
             </h2>
-
+            <hr>
             <table>
             <tbody>
             <tr>
@@ -89,20 +89,20 @@
                 </td>
                 <td>
                   <p><strong>SER:</strong> "Happy"</p>
-                  <div class="line-divider"></div>
+                  <hr>
                   <p><strong>HTSAT-BART:</strong> A woman is speaking, and her tone sounds positive.</p>
-                  <div class="line-divider"></div>
+                  <hr>
                   <p><strong>NoAudioCap:</strong> The audio is of a woman speaking, in a fast pace, with a neutral tone, and no apparent emotion.</p>
-                  <div class="line-divider"></div>
+                  <hr>
                   <p><strong>SECap:</strong> Based on the voice, it sounds like this person is fearful in the audio, and possibly sad. They might be expressing a need or desire for something, possibly related to money or finances.</p>
-                  <div class="line-divider"></div>
+                  <hr>
                   <p><strong>SeCCap:</strong> The woman in the audio is happy and cheerful. She speaks quickly, with a rising intonation and a positive tone.</p>
               </td>
             </tr>
             </tbody>
             </table>
 
-            <hr>
+            <div class="line-divider"></div>
             <table>
             <tbody>
             <tr>
@@ -116,20 +116,21 @@
                 </td>
                 <td>
                   <p><strong>SER:</strong> "Neutral"</p>
-                  <div class="line-divider"></div>
+                  <hr>
                   <p><strong>HTSAT-BART:</strong> The tone of voice indicates that the person in the audio is emotionally calm.</p>
-                  <div class="line-divider"></div>
+                  <hr>
                   <p><strong>NoAudioCap:</strong> The audio is of a man speaking, in a neutral tone, at a normal speed, with no voice changes or emotions.</p>
-                  <div class="line-divider"></div>
+                  <hr>
                   <p><strong>SECap:</strong> Based on the voice, it sounds like this person is happy in the audio, and they are expressing excitement or enthusiasm.</p>
-                  <div class="line-divider"></div>
+                  <hr>
                   <p><strong>SeCCap:</strong> The man in the audio is neutral. His speaking tone is normal, the intonation is calm, and the speaking speed is medium, saying, \"No, but I love snowboarding very much.\".</p>
               </td>
             </tr>
             </tbody>
             </table>
 
-            <hr>
+            
+            <div class="line-divider"></div>
             <table>
             <tbody>
             <tr>
@@ -143,20 +144,20 @@
                 </td>
                 <td>
                   <p><strong>SER:</strong> "Surprise"</p>
-                  <div class="line-divider"></div>
+                  <hr>
                   <p><strong>HTSAT-BART:</strong> The emotion of the person in the audio is angry. His tone is negative and impatient, and his speaking speed is fast.</p>
-                  <div class="line-divider"></div>
+                  <hr>
                   <p><strong>NoAudioCap:</strong> The tone of voice indicates that the person in the audio is emotionally argry.</p>
-                  <div class="line-divider"></div>
+                  <hr>
                   <p><strong>SECap:</strong> Based on the voice, it sounds like this person is happy in the audio, and their emotions are: happy.</p>
-                  <div class="line-divider"></div>
+                  <hr>
                   <p><strong>SeCCap:</strong> This is a man speaking, in a positive and happy tone. He speaks English with a fast speaking speed, and the content was: "Tom now let our arrows fly!".</p>
               </td>
             </tr>
             </tbody>
             </table>
 
-            <hr>
+            <div class="line-divider"></div>
             <table>
             <tbody>
             <tr>
@@ -170,13 +171,13 @@
                 </td>
                 <td>
                   <p><strong>SER:</strong> "Angry"</p>
-                  <div class="line-divider"></div>
+                  <hr>
                   <p><strong>HTSAT-BART:</strong> This is a man speaking, in an excited tone, with a fast speaking speed.</p>
-                  <div class="line-divider"></div>
+                  <hr>
                   <p><strong>NoAudioCap:</strong> The content of voice is: "What am I? I'm a racer, son of God!".</p>
-                  <div class="line-divider"></div>
+                  <hr>
                   <p><strong>SECap:</strong> Based on the voice, it sounds like this person is angry in the audio, possibly expressing disbelief or frustration.</p>
-                  <div class="line-divider"></div>
+                  <hr>
                   <p><strong>SeCCap:</strong> The man in the audio is angry. The voice is vehement and the tone is excited. He speaks at a normal speed. The content of the speech is: "What am I? I'm a racer, son of God!".</p>
               </td>
             </tr>
@@ -191,92 +192,118 @@
         
             
             <br></br>
-            <h2 id="Evaluation Results on Overdrive distoration (LibriTTS -> VCTK)">
-              <font color="000093">Evaluation Results on Overdrive distoration (LibriTTS -> VCTK)</font>
+            <h2 id="Cross-Domain Speech Emotion Captioning Evaluation Results">
+              <font color="000093">Cross-Domain Speech Emotion Captioning Evaluation Results</font>
             </h2>
-            <table class="table" align="center" style="table-layout: fixed;word-break:break-word">
-              <thead>
-                <tr>
-                  <th scope="col" width="30%" style="text-align: center;">
-                    <font color="061E61">Distorted</font>
-                  </th>
-                  <th scope="col" width="30%" style="text-align: center;">
-                    <font color="061E61">VoiceFixer</font>
-                  </th>
-                  <th scope="col" width="30%" style="text-align: center;">
-                    <font color="061E61">SelfRemaster</font>
-                  </th>
-                  <th scope="col" width="30%" style="text-align: center;">
-                    <font color="061E61">DisSR</font>
-                  </th>
-                  <th scope="col" width="30%" style="text-align: center;">
-                    <font color="061E61">Ground-Truth</font>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row"><img src="output/overdrive/fig/jsut/1-input.png" width="100%"></th>
-                  <th scope="row"><img src="output/overdrive/fig/vctk/1-vf.png" width="100%"></th>
-                  <th scope="row"><img src="output/overdrive/fig/jsut/1-self.png" width="100%"></th>
-                  <th scope="row"><img src="output/overdrive/fig/jsut/1-DisSR.png" width="100%"></th>
-                  <th scope="row"><img src="output/overdrive/fig/jsut/1-groundtruth.png" width="100%"></th>
-                </tr>
-                <tr>
-                  <th scope="row"><audio controls="controls">
-                      <source src="output/overdrive/wav/jsut/1-input.wav" autoplay />Your browser does not
-                      support the audio element.
-                    </audio></th>
-                  <th scope="row"><audio controls="controls">
-                      <source src="output/overdrive/wav/vctk/1-vf.wav" autoplay />Your browser does
-                      not support the audio element.
-                    </audio></th>
-                  <th scope="row"><audio controls="controls">
-                      <source src="output/overdrive/wav/jsut/1-self.wav" autoplay />Your browser does not support
-                      the audio element.
-                    </audio></th>
-                  <th scope="row"><audio controls="controls">
-                      <source src="output/overdrive/wav/jsut/1-DisSR.wav" autoplay />Your browser does not support
-                      the audio element.
-                    </audio></th>
-                  <th scope="row"><audio controls="controls">
-                      <source src="output/overdrive/wav/jsut/1-groundtruth.wav" autoplay />Your browser does not support
-                      the audio element.
-                    </audio></th>
-                </tr>
-                
-                <tr>
-                  <th scope="row"><img src="output/overdrive/fig/jsut/2-input.png" width="100%"></th>
-                  <th scope="row"><img src="output/overdrive/fig/vctk/2-vf.png" width="100%"></th>
-                  <th scope="row"><img src="output/overdrive/fig/jsut/2-self.png" width="100%"></th>
-                  <th scope="row"><img src="output/overdrive/fig/jsut/2-DisSR.png" width="100%"></th>
-                  <th scope="row"><img src="output/overdrive/fig/jsut/2-groundtruth.png" width="100%"></th>
-                </tr>
-                <tr>
-                  <th scope="row"><audio controls="controls">
-                      <source src="output/overdrive/wav/jsut/2-input.wav" autoplay />Your browser does not
-                      support the audio element.
-                    </audio></th>
-                  <th scope="row"><audio controls="controls">
-                      <source src="output/overdrive/wav/vctk/2-vf.wav" autoplay />Your browser does
-                      not support the audio element.
-                    </audio></th>
-                  <th scope="row"><audio controls="controls">
-                      <source src="output/overdrive/wav/jsut/2-self.wav" autoplay />Your browser does not support
-                      the audio element.
-                    </audio></th>
-                  <th scope="row"><audio controls="controls">
-                      <source src="output/overdrive/wav/jsut/2-DisSR.wav" autoplay />Your browser does not support
-                      the audio element.
-                    </audio></th>
-                  <th scope="row"><audio controls="controls">
-                      <source src="output/overdrive/wav/jsut/2-groundtruth.wav" autoplay />Your browser does not support
-                      the audio element.
-                    </audio></th>
-                </tr>
-              </tbody>
+            <hr>
+            <table>
+            <tbody>
+            <tr>
+                <td style="text-align: center;">
+                <img src="res/0003_000867.png" width="100%">
+                <audio controls="controls">
+                <source src="res/0003_000867.wav" autoplay />
+                Your browser does not support the audio element.
+                </audio>
+                  <p><strong>Transciption:</strong> "Great ! I want to exchange some yen."</p>
+                </td>
+                <td>
+                  <p><strong>SER:</strong> "Happy"</p>
+                  <hr>
+                  <p><strong>HTSAT-BART:</strong> A woman is speaking, and her tone sounds positive.</p>
+                  <hr>
+                  <p><strong>NoAudioCap:</strong> The audio is of a woman speaking, in a fast pace, with a neutral tone, and no apparent emotion.</p>
+                  <hr>
+                  <p><strong>SECap:</strong> Based on the voice, it sounds like this person is fearful in the audio, and possibly sad. They might be expressing a need or desire for something, possibly related to money or finances.</p>
+                  <hr>
+                  <p><strong>SeCCap:</strong> The woman in the audio is happy and cheerful. She speaks quickly, with a rising intonation and a positive tone.</p>
+              </td>
+            </tr>
+            </tbody>
             </table>
 
+            <div class="line-divider"></div>
+            <table>
+            <tbody>
+            <tr>
+                <td style="text-align: center;">
+                <img src="res/0004_000289.png" width="100%">
+                <audio controls="controls">
+                <source src="res/0004_000289.wav" autoplay />
+                Your browser does not support the audio element.
+                </audio>
+                  <p><strong>Transciption:</strong> "No, but I love snowboarding very much."</p>
+                </td>
+                <td>
+                  <p><strong>SER:</strong> "Neutral"</p>
+                  <hr>
+                  <p><strong>HTSAT-BART:</strong> The tone of voice indicates that the person in the audio is emotionally calm.</p>
+                  <hr>
+                  <p><strong>NoAudioCap:</strong> The audio is of a man speaking, in a neutral tone, at a normal speed, with no voice changes or emotions.</p>
+                  <hr>
+                  <p><strong>SECap:</strong> Based on the voice, it sounds like this person is happy in the audio, and they are expressing excitement or enthusiasm.</p>
+                  <hr>
+                  <p><strong>SeCCap:</strong> The man in the audio is neutral. His speaking tone is normal, the intonation is calm, and the speaking speed is medium, saying, \"No, but I love snowboarding very much.\".</p>
+              </td>
+            </tr>
+            </tbody>
+            </table>
+
+            
+            <div class="line-divider"></div>
+            <table>
+            <tbody>
+            <tr>
+                <td style="text-align: center;">
+                <img src="res/0012_001470.png" width="100%">
+                <audio controls="controls">
+                <source src="res/0012_001470.wav" autoplay />
+                Your browser does not support the audio element.
+                </audio>
+                  <p><strong>Transciption:</strong> "Tom now let our arrows fly!"</p>
+                </td>
+                <td>
+                  <p><strong>SER:</strong> "Surprise"</p>
+                  <hr>
+                  <p><strong>HTSAT-BART:</strong> The emotion of the person in the audio is angry. His tone is negative and impatient, and his speaking speed is fast.</p>
+                  <hr>
+                  <p><strong>NoAudioCap:</strong> The tone of voice indicates that the person in the audio is emotionally argry.</p>
+                  <hr>
+                  <p><strong>SECap:</strong> Based on the voice, it sounds like this person is happy in the audio, and their emotions are: happy.</p>
+                  <hr>
+                  <p><strong>SeCCap:</strong> This is a man speaking, in a positive and happy tone. He speaks English with a fast speaking speed, and the content was: "Tom now let our arrows fly!".</p>
+              </td>
+            </tr>
+            </tbody>
+            </table>
+
+            <div class="line-divider"></div>
+            <table>
+            <tbody>
+            <tr>
+                <td style="text-align: center;">
+                <img src="res/0019_000557.png" width="100%">
+                <audio controls="controls">
+                <source src="res/0019_000557.wav" autoplay />
+                Your browser does not support the audio element.
+                </audio>
+                  <p><strong>Transciption:</strong> "What am I, I'm a racer, son of god!"</p>
+                </td>
+                <td>
+                  <p><strong>SER:</strong> "Angry"</p>
+                  <hr>
+                  <p><strong>HTSAT-BART:</strong> This is a man speaking, in an excited tone, with a fast speaking speed.</p>
+                  <hr>
+                  <p><strong>NoAudioCap:</strong> The content of voice is: "What am I? I'm a racer, son of God!".</p>
+                  <hr>
+                  <p><strong>SECap:</strong> Based on the voice, it sounds like this person is angry in the audio, possibly expressing disbelief or frustration.</p>
+                  <hr>
+                  <p><strong>SeCCap:</strong> The man in the audio is angry. The voice is vehement and the tone is excited. He speaks at a normal speed. The content of the speech is: "What am I? I'm a racer, son of God!".</p>
+              </td>
+            </tr>
+            </tbody>
+            </table>
+            
             
             </p>
 
